@@ -2,7 +2,14 @@ import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
 
 function Table() {
-  const { data, filterPlanet, setFilterPlanet } = useContext(Context);
+  const {
+    data,
+    filterPlanet,
+    setFilterPlanet,
+    handleFilter,
+    handleChange,
+    filterByNumericValues,
+  } = useContext(Context);
   const [filterText, setFilterText] = useState('');
 
   const handleFilters = ({ target }) => {
@@ -21,6 +28,43 @@ function Table() {
         placeholder="Digite o nome do planeta"
         onChange={ handleFilters }
       />
+      <div>
+        <select
+          data-testid="column-filter"
+          name="column"
+          onChange={ handleChange }
+        >
+          <option>population</option>
+          <option>orbital_period</option>
+          <option>diameter</option>
+          <option>rotation_period</option>
+          <option>surface_water</option>
+        </select>
+        <select
+          data-testid="comparison-filter"
+          name="comparison"
+          onChange={ handleChange }
+        >
+          <option>maior que</option>
+          <option>menor que</option>
+          <option>igual a</option>
+        </select>
+        <input
+          type="number"
+          data-testid="value-filter"
+          name="value"
+          onChange={ handleChange }
+          value={ filterByNumericValues.value }
+          placeholder="Digite um número"
+        />
+        <button
+          type="button"
+          data-testid="button-filter"
+          onClick={ handleFilter }
+        >
+          Filtrar
+        </button>
+      </div>
       <table>
         <thead>
           <tr>
@@ -40,23 +84,25 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.filter((el) => el.name.includes(filterText)).map((planet) => (
-            <tr key={ planet.name }>
-              <td>{ planet.name }</td>
-              <td>{ planet.rotation_period }</td>
-              <td>{ planet.orbital_period }</td>
-              <td>{ planet.diameter }</td>
-              <td>{ planet.climate }</td>
-              <td>{ planet.gravity }</td>
-              <td>{ planet.terrain }</td>
-              <td>{ planet.surface_water }</td>
-              <td>{ planet.population }</td>
-              <td>{ planet.films }</td>
-              <td>{ planet.created }</td>
-              <td>{ planet.edited }</td>
-              <td>{ planet.url }</td>
-            </tr>
-          ))}
+          {data
+            .filter((el) => el.name.includes(filterText))
+            .map((planet) => (
+              <tr key={ planet.name }>
+                <td>{planet.name}</td>
+                <td>{planet.rotation_period}</td>
+                <td>{planet.orbital_period}</td>
+                <td>{planet.diameter}</td>
+                <td>{planet.climate}</td>
+                <td>{planet.gravity}</td>
+                <td>{planet.terrain}</td>
+                <td>{planet.surface_water}</td>
+                <td>{planet.population}</td>
+                <td>{planet.films}</td>
+                <td>{planet.created}</td>
+                <td>{planet.edited}</td>
+                <td>{planet.url}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
