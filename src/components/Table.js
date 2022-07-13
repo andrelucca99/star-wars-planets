@@ -1,14 +1,12 @@
 import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
+import Filter from './Filter';
 
 function Table() {
   const {
     data,
     filterPlanet,
     setFilterPlanet,
-    handleFilter,
-    handleChange,
-    filterByNumericValues,
   } = useContext(Context);
   const [filterText, setFilterText] = useState('');
 
@@ -28,45 +26,9 @@ function Table() {
         placeholder="Digite o nome do planeta"
         onChange={ handleFilters }
       />
-      <div>
-        <select
-          data-testid="column-filter"
-          name="column"
-          onChange={ handleChange }
-        >
-          <option>population</option>
-          <option>orbital_period</option>
-          <option>diameter</option>
-          <option>rotation_period</option>
-          <option>surface_water</option>
-        </select>
-        <select
-          data-testid="comparison-filter"
-          name="comparison"
-          onChange={ handleChange }
-        >
-          <option>maior que</option>
-          <option>menor que</option>
-          <option>igual a</option>
-        </select>
-        <input
-          type="number"
-          data-testid="value-filter"
-          name="value"
-          onChange={ handleChange }
-          value={ filterByNumericValues.value }
-          placeholder="Digite um número"
-        />
-        <button
-          type="button"
-          data-testid="button-filter"
-          onClick={ handleFilter }
-        >
-          Filtrar
-        </button>
-      </div>
+      <Filter />
       <table>
-        <thead>
+        <thead data-testid="cabecalho">
           <tr>
             <th>Name</th>
             <th>Rotation Period</th>

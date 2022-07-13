@@ -7,11 +7,20 @@ function Provider({ children }) {
   const [filterPlanet, setFilterPlanet] = useState({
     filterByName: { name: 'Tatoo' },
   });
+
   const [filterByNumericValues, setfilterByNumericValues] = useState({
     column: 'population',
     comparison: 'maior que',
     value: '0',
   });
+
+  const [newFilter] = useState([
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
+  ]);
 
   const getPlanets = () => {
     fetch('https://swapi-trybe.herokuapp.com/api/planets/')
@@ -33,6 +42,7 @@ function Provider({ children }) {
 
   const handleFilter = () => {
     const { column, comparison, value } = filterByNumericValues;
+
     if (comparison === 'maior que') {
       const filter = data.filter((item) => (Number(item[column]) > Number(value)));
       setData(filter);
@@ -54,6 +64,7 @@ function Provider({ children }) {
     setFilterPlanet,
     handleFilter,
     handleChange,
+    newFilter,
   };
 
   return (
