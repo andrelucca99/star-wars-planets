@@ -8,19 +8,43 @@ function Provider({ children }) {
     filterByName: { name: 'Tatoo' },
   });
 
-  const [filterByNumericValues, setfilterByNumericValues] = useState({
-    column: 'population',
-    comparison: 'maior que',
-    value: '0',
-  });
+  const [titleHead] = useState([
+    'Name',
+    'Rotation Period',
+    'Orbital Period',
+    'Diameter',
+    'Climate',
+    'Gravity',
+    'Terrain',
+    'Surface Water',
+    'Population',
+    'Films',
+    'Created',
+    'Edited',
+    'URL',
+  ]);
 
-  const [newFilter] = useState([
+  const [newFilter, setNewFilter] = useState([
     'population',
     'orbital_period',
     'diameter',
     'rotation_period',
     'surface_water',
   ]);
+
+  const [verificaFilters] = useState([
+    'maior que',
+    'menor que',
+    'igual a',
+  ]);
+
+  const [filterByNumericValues, setFilterByNumericValues] = useState({
+    column: newFilter[0],
+    comparison: 'maior que',
+    value: 0,
+  });
+
+  const [filters, setFilters] = useState([]);
 
   const getPlanets = () => {
     fetch('https://swapi-trybe.herokuapp.com/api/planets/')
@@ -34,37 +58,26 @@ function Provider({ children }) {
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setfilterByNumericValues({
+    setFilterByNumericValues({
       ...filterByNumericValues,
       [name]: value,
     });
-  };
-
-  const handleFilter = () => {
-    const { column, comparison, value } = filterByNumericValues;
-
-    if (comparison === 'maior que') {
-      const filter = data.filter((item) => (Number(item[column]) > Number(value)));
-      setData(filter);
-    }
-    if (comparison === 'menor que') {
-      const filter = data.filter((item) => (Number(item[column]) < Number(value)));
-      setData(filter);
-    }
-    if (comparison === 'igual a') {
-      const filter = data.filter((item) => (Number(item[column]) === Number(value)));
-      setData(filter);
-    }
   };
 
   const state = {
     data,
     filterPlanet,
     filterByNumericValues,
-    setFilterPlanet,
-    handleFilter,
-    handleChange,
     newFilter,
+    filters,
+    verificaFilters,
+    titleHead,
+    setFilterPlanet,
+    handleChange,
+    setFilterByNumericValues,
+    setNewFilter,
+    setFilters,
+    setData,
   };
 
   return (

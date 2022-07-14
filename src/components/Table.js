@@ -6,6 +6,7 @@ function Table() {
   const {
     data,
     filterPlanet,
+    titleHead,
     setFilterPlanet,
   } = useContext(Context);
   const [filterText, setFilterText] = useState('');
@@ -28,21 +29,11 @@ function Table() {
       />
       <Filter />
       <table>
-        <thead data-testid="cabecalho">
+        <thead>
           <tr>
-            <th>Name</th>
-            <th>Rotation Period</th>
-            <th>Orbital Period</th>
-            <th>Diameter</th>
-            <th>Climate</th>
-            <th>Gravity</th>
-            <th>Terrain</th>
-            <th>Surface Water</th>
-            <th>Population</th>
-            <th>Films</th>
-            <th>Created</th>
-            <th>Edited</th>
-            <th>URL</th>
+            {titleHead.map((el) => (
+              <th key={ el }>{el}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
