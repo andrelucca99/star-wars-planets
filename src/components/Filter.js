@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Context from '../context/Context';
+import OrdeneColuna from './OrdeneColuna';
 
 function Filter() {
   const {
@@ -8,33 +9,71 @@ function Filter() {
     newFilter,
     filters,
     verificaFilters,
-    data,
     setData,
     setNewFilter,
     setFilters,
     setFilterByNumericValues,
+    data,
+    dataInicial,
   } = useContext(Context);
 
-  const handleFilter = () => {
-    const { column, comparison, value } = filterByNumericValues;
+  const filtersNoRepeat = () => {
+    const pegaFilters = newFilter.filter((el) => el !== filterByNumericValues.column);
+    setNewFilter(pegaFilters);
+    setFilterByNumericValues({
+      ...filterByNumericValues,
+      column: pegaFilters[0],
+    });
+    setFilters([...filters, filterByNumericValues]);
+  };
+
+  const handleFilter = ({ column, comparison, value }, local) => {
+    let localFilter = [];
 
     if (comparison === 'maior que') {
-      const filter = data.filter((item) => (Number(item[column]) > Number(value)));
-      setData(filter);
+      localFilter = local.filter((el) => Number(el[column]) > Number(value));
     }
     if (comparison === 'menor que') {
-      const filter = data.filter((item) => (Number(item[column]) < Number(value)));
-      setData(filter);
+      localFilter = local.filter((el) => Number(el[column]) < Number(value));
     }
     if (comparison === 'igual a') {
-      const filter = data.filter((item) => (Number(item[column]) === Number(value)));
-      setData(filter);
+      localFilter = local.filter((el) => Number(el[column]) === Number(value));
     }
 
-    const filteredOpt = newFilter.filter((el) => el !== filterByNumericValues.column);
-    setNewFilter(filteredOpt);
-    setFilterByNumericValues({ ...filterByNumericValues, column: filteredOpt[0] });
-    setFilters([...filters, filterByNumericValues]);
+    return localFilter;
+  };
+
+  const appFilters = () => {
+    let dadosIniciais = dataInicial;
+
+    filters.forEach((el) => {
+      dadosIniciais = handleFilter(el, dadosIniciais);
+    });
+
+    return dadosIniciais;
+  };
+
+  useEffect(() => {
+    setData(appFilters());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
+
+  const deleteFilter = ({ target }) => {
+    const { value } = target;
+    setNewFilter([...newFilter, value]);
+    setFilters(filters.filter((filter) => filter.column !== value));
+  };
+
+  const deletaAllFilters = () => {
+    setNewFilter([
+      'population',
+      'orbital_period',
+      'diameter',
+      'rotation_period',
+      'surface_water',
+    ]);
+    setFilters([]);
+    setData(dataInicial);
   };
 
   return (
@@ -46,7 +85,7 @@ function Filter() {
         value={ filterByNumericValues.column }
       >
         {newFilter.map((el) => (
-          <option key={ el }>{el}</option>
+          <option key={ el }>{ el }</option>
         ))}
       </select>
       <select
@@ -56,7 +95,7 @@ function Filter() {
         value={ filterByNumericValues.comparison }
       >
         {verificaFilters.map((el) => (
-          <option key={ el }>{el}</option>
+          <option key={ el }>{ el }</option>
         ))}
       </select>
       <input
@@ -70,17 +109,38 @@ function Filter() {
       <button
         type="button"
         data-testid="button-filter"
-        onClick={ handleFilter }
+        onClick={ () => {
+          setData(handleFilter(filterByNumericValues, data));
+          filtersNoRepeat();
+        } }
       >
         Filtrar
       </button>
+
+      <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ deletaAllFilters }
+      >
+        Remover todas filtragens
+      </button>
+
       {filters.map((el) => (
-        <p key={ el.column }>
+        <div data-testid="filter" key={ el.column }>
           {el.column}
           {el.comparison}
           {el.value}
-        </p>
-      )) }
+          <button
+            type="button"
+            onClick={ deleteFilter }
+            value={ el.column }
+            data-testid="filter-btn"
+          >
+            remove
+          </button>
+        </div>
+      ))}
+      <OrdeneColuna />
     </div>
   );
 }

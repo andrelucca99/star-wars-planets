@@ -1,0 +1,15 @@
+ // if (comparison === 'maior que') {
+    //   // const localFilter = local.filter((el) => Number(el[column]) > Number(value));
+    //   localFilter = local.filter((el) => Number(el[column]) > Number(value));
+    //   // setData(localFilter);
+    // }
+    // if (comparison === 'menor que') {
+    //   // const localFilter = local.filter((el) => Number(el[column]) < Number(value));
+    //   localFilter = local.filter((el) => Number(el[column]) < Number(value));
+    //   // setData(localFilter);
+    // }
+    // if (comparison === 'igual a') {
+    //   // const localFilter = local.filter((el) => Number(el[column]) === Number(value));
+    //   localFilter = local.filter((el) => Number(el[column]) === Number(value));
+    //   // setData(localFilter);
+    // }

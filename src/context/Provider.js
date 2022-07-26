@@ -46,10 +46,15 @@ function Provider({ children }) {
 
   const [filters, setFilters] = useState([]);
 
+  const [dataInicial, setDataInical] = useState([]);
+
   const getPlanets = () => {
     fetch('https://swapi-trybe.herokuapp.com/api/planets/')
       .then((response) => response.json())
-      .then((item) => setData(item.results));
+      .then((item) => {
+        setData(item.results);
+        setDataInical(item.results);
+      });
   };
 
   useEffect(() => {
@@ -78,6 +83,8 @@ function Provider({ children }) {
     setNewFilter,
     setFilters,
     setData,
+    dataInicial,
+    setDataInical,
   };
 
   return (
