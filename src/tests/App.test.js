@@ -6,12 +6,11 @@ import testData from "../../cypress/mocks/testData";
 
 describe("Desenvolva testes para atingir 50% de cobertura total da aplicação", () => {
   beforeEach(() => {
-    jest.spyOn(global, "fetch");
-    global.fetch.mockResolvedValue({
-      json: jest.fn().mockResolvedValue(testData),
-    });
-  });
-
+    jest.spyOn(global, "fetch")
+    .mockImplementation( async () => ({
+      json: async () => testData,
+  }));
+  })
   afterEach(() => {
     // restore the spy created with spyOn
     jest.restoreAllMocks();
@@ -57,11 +56,11 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
     const columnEl = screen.getByTestId("column-filter");
     expect(columnEl).toBeInTheDocument();
 
-    userEvent.click(columnEl);
+    // userEvent.click(columnEl);
 
     userEvent.selectOptions(columnEl, "orbital_period");
 
-    userEvent.click(columnEl);
+    // userEvent.click(columnEl);
 
     const comparisonEl = screen.getByTestId("comparison-filter");
     expect(comparisonEl).toBeInTheDocument();
@@ -69,7 +68,7 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
     userEvent.click(comparisonEl);
 
     userEvent.selectOptions(comparisonEl, "maior que");
-    userEvent.click(comparisonEl);
+    // userEvent.click(comparisonEl);
     expect(comparisonEl).toBeInTheDocument();
 
     const valueEl = screen.getByTestId("value-filter");
@@ -221,5 +220,45 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
 
     const table = await screen.findAllByRole('cell');
     expect(table).toHaveLength(130);
+  });
+
+  test('Teste se o component OrdeneColuna é renderizado na tela', async () => {
+    render(<App />);
+
+    const selectEl = screen.getByTestId('column-sort');
+    expect(selectEl).toBeInTheDocument();
+
+    userEvent.selectOptions(selectEl, "orbital_period");
+
+    const inputAcs = screen.getByTestId('column-sort-input-asc');
+    expect(inputAcs).toBeInTheDocument();
+
+    userEvent.click(inputAcs);
+
+    const btn = screen.getByTestId('column-sort-button');
+    expect(btn).toBeInTheDocument();
+
+    userEvent.click(btn);
+
+  });
+
+  test('Teste se o component OrdeneColuna se ele filtra por ordem desc', async () => {
+    render(<App />);
+
+    const selectEl = screen.getByTestId('column-sort');
+    expect(selectEl).toBeInTheDocument();
+
+    userEvent.selectOptions(selectEl, "orbital_period");
+
+    const inputDecs = screen.getByTestId('column-sort-input-desc');
+    expect(inputDecs).toBeInTheDocument();
+
+    userEvent.click(inputDecs);
+
+    const btn = screen.getByTestId('column-sort-button');
+    expect(btn).toBeInTheDocument();
+
+    userEvent.click(btn);
+
   });
 });

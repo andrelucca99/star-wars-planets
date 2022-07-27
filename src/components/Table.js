@@ -36,11 +36,11 @@ function Table() {
             ))}
           </tr>
         </thead>
-        <tbody data-testid="table">
+        <tbody id="search-results-table" data-testid="table">
           {data.length > 0
             && data.filter((el) => el.name.includes(filterText))
               .map((planet) => (
-                <tr key={ planet.name }>
+                <tr data-testid="planet-name" key={ planet.name }>
                   <td>{planet.name}</td>
                   <td>{planet.rotation_period}</td>
                   <td>{planet.orbital_period}</td>

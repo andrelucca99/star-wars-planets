@@ -28,16 +28,17 @@ function Filter() {
   };
 
   const handleFilter = ({ column, comparison, value }, local) => {
-    let localFilter = [];
+    let localFilter = local;
 
     if (comparison === 'maior que') {
-      localFilter = local.filter((el) => Number(el[column]) > Number(value));
+      localFilter = localFilter.filter((el) => Number(el[column]) > Number(value));
+      console.log(localFilter);
     }
     if (comparison === 'menor que') {
-      localFilter = local.filter((el) => Number(el[column]) < Number(value));
+      localFilter = localFilter.filter((el) => Number(el[column]) < Number(value));
     }
     if (comparison === 'igual a') {
-      localFilter = local.filter((el) => Number(el[column]) === Number(value));
+      localFilter = localFilter.filter((el) => Number(el[column]) === Number(value));
     }
 
     return localFilter;
