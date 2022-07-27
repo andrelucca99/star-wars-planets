@@ -19,8 +19,8 @@ function OrdeneColuna() {
       setData(recebeTable);
     }
     if (order.sort === 'DESC') {
-      recebeTable.sort((a, b) => parseFloat(b[order.column])
-      - parseFloat(a[order.column]));
+      recebeTable.sort((a, b) => ((parseFloat(b[order.column]) || 0)
+      - (parseFloat(a[order.column]) || 0)));
       setData(recebeTable);
     }
   };
