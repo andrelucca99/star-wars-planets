@@ -13,16 +13,29 @@ function OrdeneColuna() {
 
   const handleOrdenar = () => {
     const recebeTable = [...data];
-    if (order.sort === 'ASC') {
+
+    switch (order.sort) {
+    case 'ASC':
       recebeTable.sort((a, b) => parseFloat(a[order.column])
-      - parseFloat(b[order.column]));
+        - parseFloat(b[order.column]));
       setData(recebeTable);
-    }
-    if (order.sort === 'DESC') {
+      break;
+    default:
       recebeTable.sort((a, b) => ((parseFloat(b[order.column]) || 0)
-      - (parseFloat(a[order.column]) || 0)));
+       - (parseFloat(a[order.column]) || 0)));
       setData(recebeTable);
     }
+
+    // if (order.sort === 'ASC') {
+    //   recebeTable.sort((a, b) => parseFloat(a[order.column])
+    //   - parseFloat(b[order.column]));
+    //   setData(recebeTable);
+    // }
+    // if (order.sort === 'DESC') {
+    //   recebeTable.sort((a, b) => ((parseFloat(b[order.column]) || 0)
+    //   - (parseFloat(a[order.column]) || 0)));
+    //   setData(recebeTable);
+    // }
   };
 
   return (

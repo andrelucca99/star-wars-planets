@@ -228,7 +228,11 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
     const selectEl = screen.getByTestId('column-sort');
     expect(selectEl).toBeInTheDocument();
 
-    userEvent.selectOptions(selectEl, "orbital_period");
+    const listPlanetBeforeOrder = await screen.findAllByTestId('planet-name');
+    expect(listPlanetBeforeOrder).toHaveLength(10);
+    expect(listPlanetBeforeOrder[0]).toHaveTextContent(/alderaan/i);
+
+    userEvent.selectOptions(selectEl, "population");
 
     const inputAcs = screen.getByTestId('column-sort-input-asc');
     expect(inputAcs).toBeInTheDocument();
@@ -240,6 +244,10 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
 
     userEvent.click(btn);
 
+    const listPlanetAfterOrder = await screen.findAllByTestId('planet-name');
+    expect(listPlanetAfterOrder).toHaveLength(10);
+    expect(listPlanetAfterOrder[0]).toHaveTextContent(/Yavin IV/i);
+
   });
 
   test('Teste se o component OrdeneColuna se ele filtra por ordem desc', async () => {
@@ -248,7 +256,11 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
     const selectEl = screen.getByTestId('column-sort');
     expect(selectEl).toBeInTheDocument();
 
-    userEvent.selectOptions(selectEl, "orbital_period");
+    const listPlanetBeforeOrder = await screen.findAllByTestId('planet-name');
+    expect(listPlanetBeforeOrder).toHaveLength(10);
+    expect(listPlanetBeforeOrder[0]).toHaveTextContent(/alderaan/i);
+
+    userEvent.selectOptions(selectEl, "population");
 
     const inputDecs = screen.getByTestId('column-sort-input-desc');
     expect(inputDecs).toBeInTheDocument();
@@ -259,6 +271,10 @@ describe("Desenvolva testes para atingir 50% de cobertura total da aplicação",
     expect(btn).toBeInTheDocument();
 
     userEvent.click(btn);
+
+    const listPlanetAfterOrder = await screen.findAllByTestId('planet-name');
+    expect(listPlanetAfterOrder).toHaveLength(10);
+    expect(listPlanetAfterOrder[0]).toHaveTextContent(/Coruscant/i);
 
   });
 });

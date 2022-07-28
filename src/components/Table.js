@@ -36,7 +36,7 @@ function Table() {
             ))}
           </tr>
         </thead>
-        <tbody id="search-results-table" data-testid="table">
+        <tbody data-testid="table">
           {data.length > 0
             && data.filter((el) => el.name.includes(filterText))
               .map((planet) => (
