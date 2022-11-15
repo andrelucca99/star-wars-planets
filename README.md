@@ -13,8 +13,8 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 -->
 # Star Wars Planets Search!
 
-- Esse projeto foi desenvolvido durante o módulo de Front-end da <a href="www.betrybe.com">Trybe</a>
-- Visualize o projeto: <a href="https://star-wars-planets-three.vercel.app/">Site</a>
+- Esse projeto foi desenvolvido durante o módulo de Front-end da <a href="www.betrybe.com" target="_blank">Trybe</a>
+- Visualize o projeto: <a href="https://star-wars-planets-three.vercel.app/" target="_blank">Site</a>
 
 <img src="./banner.gif" />
 

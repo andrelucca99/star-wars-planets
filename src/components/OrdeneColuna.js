@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
+import './css/OrdeneColuna.css';
 
 function OrdeneColuna() {
   const { data, setData } = useContext(Context);
@@ -39,8 +40,9 @@ function OrdeneColuna() {
   };
 
   return (
-    <div>
+    <div className="test">
       <select
+        className="ordene_select"
         data-testid="column-sort"
         name="column-sort"
         onChange={ (e) => setOrder({
@@ -72,6 +74,7 @@ function OrdeneColuna() {
       />
       Descendente
       <button
+        className="btn"
         type="button"
         data-testid="column-sort-button"
         onClick={ () => handleOrdenar() }

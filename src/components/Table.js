@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
 import Filter from './Filter';
+import './css/Table.css';
 
 function Table() {
   const {
@@ -18,9 +19,10 @@ function Table() {
   };
 
   return (
-    <div>
-      <h1>Projeto Star Wars - Trybe</h1>
+    <div className="container">
+      <h1>Star Wars Planets - Trybe</h1>
       <input
+        className="text_input"
         type="text"
         data-testid="name-filter"
         value={ filterText }
@@ -28,15 +30,15 @@ function Table() {
         onChange={ handleFilters }
       />
       <Filter />
-      <table>
-        <thead>
+      <table className="table_container">
+        <thead className="thead_container">
           <tr>
             {titleHead.map((el) => (
               <th key={ el }>{ el }</th>
             ))}
           </tr>
         </thead>
-        <tbody data-testid="table">
+        <tbody data-testid="table" className="tbody_container">
           {data.length > 0
             && data.filter((el) => el.name.includes(filterText))
               .map((planet) => (

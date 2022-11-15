@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import Context from '../context/Context';
 import OrdeneColuna from './OrdeneColuna';
+import './css/Filter.css';
 
 function Filter() {
   const {
@@ -78,8 +79,9 @@ function Filter() {
   };
 
   return (
-    <div>
+    <div className="filter_container">
       <select
+        className="filter_select"
         data-testid="column-filter"
         name="column"
         onChange={ handleChange }
@@ -90,6 +92,7 @@ function Filter() {
         ))}
       </select>
       <select
+        className="filter_select"
         data-testid="comparison-filter"
         name="comparison"
         onChange={ handleChange }
@@ -100,6 +103,7 @@ function Filter() {
         ))}
       </select>
       <input
+        className="filter_select"
         type="number"
         data-testid="value-filter"
         name="value"
@@ -108,6 +112,7 @@ function Filter() {
         placeholder="Digite um número"
       />
       <button
+        className="btn"
         type="button"
         data-testid="button-filter"
         onClick={ () => {
@@ -119,6 +124,7 @@ function Filter() {
       </button>
 
       <button
+        className="btn"
         type="button"
         data-testid="button-remove-filters"
         onClick={ deletaAllFilters }
@@ -132,6 +138,7 @@ function Filter() {
           {el.comparison}
           {el.value}
           <button
+            className="btn"
             type="button"
             onClick={ deleteFilter }
             value={ el.column }

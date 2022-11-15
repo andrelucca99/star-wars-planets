@@ -1,0 +1,34 @@
+.test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.ordene_select {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.ordene_select:hover {
+  background: #555;
+  cursor: pointer;
+  color: #fff;
+}
+
+.ordene_input {
+  background: red;
+}
+
+.btn {
+  padding: 5px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.btn:hover {
+  background: #555;
+  cursor: pointer;
+  color: #fff;
+}
