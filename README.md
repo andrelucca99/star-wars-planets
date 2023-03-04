@@ -13,7 +13,7 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 -->
 # Star Wars Planets Search!
 
-- Foi desenvolvido uma lista com filtros de planetas do universo de Star Wars<br> usando Context API e Hooks para controlar os estados globais.
+- Foi desenvolvido uma lista com filtros de planetas do universo de Star Wars<br> usando Context API e Hooks para controlar os estados globais. <a href="star-wars-planets-three.vercel.app" target="_blank">site</a>
 
 - Hards Skills usadas no projeto:
   - Context API do React para gerenciar estado.
