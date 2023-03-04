@@ -13,13 +13,6 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 -->
 # Star Wars Planets Search!
 
-- Esse projeto foi desenvolvido durante o módulo de Front-end da <a href="www.betrybe.com" target="_blank">Trybe</a>
-- Visualize o projeto: <a href="https://star-wars-planets-three.vercel.app/" target="_blank">Site</a>
-
-<img src="./banner.gif" />
-
-## Sobre o projeto
-
 - Foi desenvolvido uma lista com filtros de planetas do universo de Star Wars<br> usando Context API e Hooks para controlar os estados globais.
 
 - Hards Skills usadas no projeto:
@@ -29,3 +22,5 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
   - Hook useEffect;
   - Hooks customizados.
   - Testing Library / cobertura de testes.
+
+<img src="./banner.gif" />
