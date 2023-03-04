@@ -36,7 +36,7 @@ h1 {
     font-size: 15px;
 }
 
-.tbody_container > tr > .teste {
+.tbody_container > tr > .column-white {
     max-width: 500px;
     background: #cbc7c7;
 }
