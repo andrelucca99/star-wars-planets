@@ -49,7 +49,7 @@ function Provider({ children }) {
   const [dataInicial, setDataInical] = useState([]);
 
   const getPlanets = () => {
-    fetch('https://swapi-trybe.herokuapp.com/api/planets/')
+    fetch('https://swapi.dev/api/planets/')
       .then((response) => response.json())
       .then((item) => {
         setData(item.results);

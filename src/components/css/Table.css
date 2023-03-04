@@ -30,5 +30,13 @@ h1 {
 
 .tbody_container {
     background: #6C6C6C;
+    text-align: center;
+    padding: 50px;
+    word-break: break-word;
     font-size: 15px;
+}
+
+.tbody_container > tr > .teste {
+    max-width: 500px;
+    background: #cbc7c7;
 }

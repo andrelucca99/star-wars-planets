@@ -44,17 +44,17 @@ function Table() {
               .map((planet) => (
                 <tr key={ planet.name }>
                   <td data-testid="planet-name">{planet.name}</td>
-                  <td>{planet.rotation_period}</td>
+                  <td className="column-white">{planet.rotation_period}</td>
                   <td>{planet.orbital_period}</td>
-                  <td>{planet.diameter}</td>
+                  <td className="column-white">{planet.diameter}</td>
                   <td>{planet.climate}</td>
-                  <td>{planet.gravity}</td>
+                  <td className="column-white">{planet.gravity}</td>
                   <td>{planet.terrain}</td>
-                  <td>{planet.surface_water}</td>
+                  <td className="column-white">{planet.surface_water}</td>
                   <td>{planet.population}</td>
-                  <td>{planet.films}</td>
+                  <td className="column-white"><span>{planet.films}</span></td>
                   <td>{planet.created}</td>
-                  <td>{planet.edited}</td>
+                  <td className="column-white">{planet.edited}</td>
                   <td>{planet.url}</td>
                 </tr>
               ))}
