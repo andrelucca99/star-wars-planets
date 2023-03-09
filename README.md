@@ -11,16 +11,17 @@ Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua cr
 - quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
 - quais arquivos/pastas foram desenvolvidos pela Trybe.
 -->
-# Star Wars Planets Search!
 
-- Foi desenvolvido uma lista com filtros de planetas do universo de Star Wars<br> usando Context API e Hooks para controlar os estados globais. <a href="https://star-wars-planets-three.vercel.app/" target="_blank">site</a>
+<h1>Star Wars Planets Search</h1>
 
-- Hards Skills usadas no projeto:
-  - Context API do React para gerenciar estado.
-  - Hook useState;
-  - Hook useContext;
-  - Hook useEffect;
-  - Hooks customizados.
-  - Testing Library / cobertura de testes.
+- Foi desenvolvido uma tabela de dados, que faz uma requisição para a `API` de Star Wars, e através desses dados é gerada uma lista onde é possivel fazer filtros, dos planetas do universo de Star Wars, e outras informações usando `Context API` e `Hooks` para controlar os estados globais da aplicação.
+
+- Para visualizar à aplicação: <a href="https://star-wars-planets-three.vercel.app/" target="_blank">site</a>
+
+- Stacks usadas no projeto:<br />
+
+  `React`, `Context API`, `useState`, `useContext`, `useEffect`, `Hooks customizados` e `Testing Library` para cobertura de testes.
+
+<hr>
 
 <img src="./banner.gif" />
